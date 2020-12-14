@@ -24,19 +24,19 @@ import { writable } from 'svelte/store';
 // lab variables
 export const studyLocation = 'Dartmouth College, USA'; // location of lab running mturk study
 export const labName = 'FINNLab'; // name of lab running HIT experiment 
-export const email = 'Rekha.S.Varrier@dartmouth.edu'; // lab email for mturk
+export const email = 'finnlabneuro@gmail.com'; // lab email for mturk
 export const studyAim = 'to learn how people perceive social interactions'; // aim of mturk study 
-export const studyTasks = 'paying attention to the video'; // brief summary of HIT task for consent form
+export const studyTasks = 'continuously rating a short videoclip followed by answering some questions'; // brief summary of HIT task for consent form - in our case, MTurk preview
 export const experiment = 'socialness'; // name of experiment (should match collection name in firebase)
 
 // HIT variables
-export const HITPay = '2.00'; // pay for HIT completion (format as X.XX with no dollar sign)
+export const HITPay = '1.50'; // pay for HIT completion (format as X.XX with no dollar sign)
 export const userGroup = 'demo'; // name of collection of participants for current HIT
-export const estHITTime = '5'; // estimated time to complete HIT (in minutes)
+export const estHITTime = '3'; // estimated time to complete HIT (in minutes)
 export const totalHITTime = estHITTime * 2; // total time provided for HIT (in minutes)
 
 // stimuli variables      
-export const ratingTypes = ['mental']; // array of rating types   
+export const ratingTypes = ['social']; // array of rating types   
 
 // this configures path to proper firebase
 // COPY AND PASTE YOUR FIREBASE CONFIG HERE
