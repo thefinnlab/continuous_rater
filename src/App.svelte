@@ -57,7 +57,7 @@
         // Change to the new state within Svelte
         if (params.workerId === 'test-worker') {
             currentState = 'consent';
-            let subjectRef = subjectGroupCollection.e(params.workerId);
+            let subjectRef = subjectGroupCollection.doc(params.workerId);
             subjectRef.get().then(function(doc) {
                 try {
                     let currPath = `${ratingsPath}/${params.workerId}`;
