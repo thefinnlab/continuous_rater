@@ -1,18 +1,28 @@
-<!-- this page displays a demo version of the rating box that doesn't store data -->
+	<!-- this page displays a demo version of the rating box that doesn't store data -->
 
 <script>
     import { createEventDispatcher } from 'svelte';
 	import RatingBox from '../RatingBox.svelte';
+	import CustomVideo from '../CustomVideo.svelte';
     import { experiment } from '../utils.js';
     
     const dispatch = createEventDispatcher();
     
+	export let src;
     export let time = 0;
     export let ratingType;
 	let pathway = `${experiment}/demo`;
 	let paused = false;
     let rating = 50.0;
     
+	function handlePause() {
+		paused = true;
+    };
+    
+	function handlePlay() {
+		paused = false;	
+	};
+
     function handleEnd() {
 		dispatch('finished');
     };
@@ -52,27 +62,25 @@
         margin: 0 auto !important;
     }
 
-    .keys {
-        align-items: center;
-        text-align: left;
-        margin: 0 auto !important;
-        width: 25%;
-        padding: 2%;
-        background-color: rgba(255, 255, 255, 0.4);
-        border: 2px solid grey;
-        border-radius: 2px;
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-
-    }
-
-    h1 {
+    h2 {
         text-align: center;
     }
 </style>
 
 <div>
-	<h1>Demo</h1>
+	<h2>This is a demo. Please scroll down and Zoom in or out until you see the two boxes fully.</h2>
 	<div class="container">
+		<h3>Video: </h3>
+		<p>Click on the video to start/pause</p>
+		<CustomVideo
+			src={src}
+			bind:time={time}
+			on:pause={handlePause}
+			on:play={handlePlay}
+			on:finished={handleEnd}
+		></CustomVideo>
+		<h3>Rating Box: </h3>
+		<p>	Press <strong> up </strong> arrow and <strong>down</strong> arrow keys continuously to change the ratings. <br> Hold either arrow key to accelerate in that direction. <br>Release key to reset acceleration.</p>
 		<RatingBox 
 			pathway={pathway}
 			rating={rating}
@@ -83,12 +91,6 @@
 		</RatingBox>
 	</div>
 	<div class="key-box">
-		<div class="keys">
-			<p><strong>Up arrow key:</strong> move rating bar up</p>
-			<p><strong>Down arrow key:</strong> move rating bar down</p>
-			<p>Hold either arrow key to accelerate in that direction. Release key to reset acceleration</p>
-		</div>
-		<br>
 		<button class="back" on:click={handleBack}>Back</button>
 		<button class="next" on:click={handleEnd}>Next</button>
 	</div>

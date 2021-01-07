@@ -29,10 +29,14 @@
     const subjectGroupCollection = db.collection(subjectGroupPath);
     const stimuliPath = `${experiment}/stimuli`;
     const stimuliDoc = db.doc(stimuliPath);
+	const demo_stimuliPath = `${experiment}/demo_stimuli`;
+    const demo_stimuliDoc = db.doc(demo_stimuliPath);
 
 	// declare and set other necessary variables
 	let currVid;
 	let currVidSrc;
+	let demo_currVid;
+	let demo_currVidSrc;
 	let currRating;
 	let subjectPath;
 	let ratingDocPathway;
@@ -40,6 +44,7 @@
     let consentStatus;
     let alreadyWatched = [];
     let moviesRemaining = [];
+	let demo_moviesRemaining = [];
     let numOptions;
     let time = 0;
     let initExperiment = false;
@@ -52,7 +57,7 @@
         // Change to the new state within Svelte
         if (params.workerId === 'test-worker') {
             currentState = 'consent';
-            let subjectRef = subjectGroupCollection.doc(params.workerId);
+            let subjectRef = subjectGroupCollection.e(params.workerId);
             subjectRef.get().then(function(doc) {
                 try {
                     let currPath = `${ratingsPath}/${params.workerId}`;
@@ -171,14 +176,54 @@
                                         if (numOptions > 0) {
                                         // choose random movie and rating type
                                             let movieIndex = Math.floor(Math.random()*moviesRemaining.length);
-                                            let ratingIndex = Math.floor(Math.random()*ratingTypes.length);
-                                            currVid = moviesRemaining[movieIndex];
-                                            currRating = ratingTypes[ratingIndex];
-                                            let vidPlusRating = `${currVid}-${currRating}`;
+                                            let ratingIndex = Math.floor(Math.random()*ratingTypes.length); // always 0 for us (since ratingTypes = ['social])
+                                            console.log('ratingTypes.length:',ratingTypes.length)
+											
+											currVid = moviesRemaining[movieIndex];
+											currRating = ratingTypes[ratingIndex]; // 'social' in our case
+                                            let vidPlusRating = `${currVid}-${currRating}`;//videoname-social
                                             ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
                                             // grab URL for video sourcing 
                                             currVidSrc = stimuliTable.data()[currVid];
+											console.log('url:',currVidSrc)
                                             updateState('consent');
+                                            
+                                        } else {
+                                            console.log("no options left!");
+                                            updateState('complete');
+                                        }
+                                    });
+                                });
+								
+								// DEMO PAGE - grab stimuli doc and add all movies to list
+                                demo_stimuliDoc.get().then(function(demo_stimuliTable) {
+                                    for (var field in demo_stimuliTable.data()) {
+                                        demo_moviesRemaining.push(field);         
+                                    }
+                                    // check to see which movies subject has already viewed (if any)
+                                    let currPath = `${ratingsPath}/${params.workerId}`;
+                                    db.collection(currPath).get().then(function(ratingList) {
+                                        // removes already completed movies from option set
+                                        ratingList.forEach(function(doc) {
+                                            demo_moviesRemaining = removeItemOnce(demo_moviesRemaining, doc.id.split("-")[0]);
+                                        });
+                                        // see how many movies are left
+                                        numOptions = 1; //demo_moviesRemaining.length;
+                                        console.log('demo_moviesRemaining: ', demo_moviesRemaining);
+                                        // if any movie-rating pairings left, load and start
+                                        if (numOptions > 0) {
+                                        // choose random movie and rating type
+                                            let demo_movieIndex = Math.floor(Math.random()*demo_moviesRemaining.length);
+                                            //let ratingIndex = Math.floor(Math.random()*ratingTypes.length);
+                                            demo_currVid = demo_moviesRemaining[demo_movieIndex];
+											console.log('demo_currVid:',demo_currVid)
+											//currRating = ratingTypes[ratingIndex]; 
+                                            //let vidPlusRating = `${currVid}-${currRating}`; 
+                                            //ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
+                                            // grab URL for video sourcing 
+                                            demo_currVidSrc = demo_stimuliTable.data()[demo_currVid];
+											console.log('demo url:',demo_currVidSrc)
+                                            updateState('consent'); // REMOVE THIS?
                                             
                                         } else {
                                             console.log("no options left!");
@@ -294,7 +339,12 @@
 	{:else if currentState === 'instructions1'}
 		<Instructions1 ratingType={currRating} numOptions={numOptions} on:finished={() => updateState('demo')} />
 	{:else if currentState === 'demo'}
-		<Demo time={time} ratingType={currRating} on:back={() => updateState('instructions1')} on:finished={() => updateState('instructions2')} />
+		<Demo 
+			src={demo_currVidSrc}
+			time={time} 
+			ratingType={currRating} 
+			on:back={() => updateState('instructions1')} 
+			on:finished={() => updateState('instructions2')} />
 	{:else if currentState === 'instructions2'}
 		<Instructions2 on:back={() => updateState('demo')} on:finished={() => updateState('task')} />
 	{:else if currentState === 'task'}

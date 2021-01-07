@@ -7,7 +7,7 @@
   // Add/remove items here to create more instructions pages
   
   const instructions = [
-    'If these instructions make sense and you would like to begin, click the button below to proceed to the task. Otherwise please return this HIT.'
+    'If these instructions make sense and you would like to begin, click the button the "Go to Task" button. If you would like to re-do the demo, please press the "Back" button.'
   ];
 
   const dispatch = createEventDispatcher();
