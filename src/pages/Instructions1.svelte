@@ -6,7 +6,7 @@
   export let numOptions; //from App.svelte
 
   // Add/remove items here to create more instructions pages
-  const ratingInstruct = 'In this task, you will watch a short video clip involving moving shapes and provide continuous ratings, following which you will answer a few questions. <br><br> Specifically, you will rate to what degree the shapes seem to be having a social interaction(s) as opposed to moving randomly throughout the presented video using your keyboard, which controls a rating box (which is demoed on the next page) throughout the video. <br><br> You should not redo this HIT. '
+  const ratingInstruct = 'The first part of this HIT requires you to provide continuous ratings on a moving bar while watching a short video clip involving moving shapes. The  ratings will indicate the degree to which you perceive a social interaction between the shapes (as opposed to random movement of the shapes) in the video clip at that given time point. <br><br>Following the video, you will be asked to answer a series of questions. <br><br>You should not redo this HIT. '
   // You may redo this HIT up to ' + numOptions + ' more times (you are provided with a different video each time). '
   const instructions = [
     ratingInstruct

@@ -71,7 +71,7 @@
 	<h2>This is a demo. Please scroll down and Zoom in or out until you see the two boxes fully.</h2>
 	<div class="container">
 		<h3>Video: </h3>
-		<p>Click on the video to start/pause</p>
+		<p>Click on the video to start/pause (the video may take a few seconds to load, so please wait.) </p>
 		<CustomVideo
 			src={src}
 			bind:time={time}
@@ -80,7 +80,7 @@
 			on:finished={handleEnd}
 		></CustomVideo>
 		<h3>Rating Box: </h3>
-		<p>	Press <strong> up </strong> arrow and <strong>down</strong> arrow keys continuously to change the ratings. <br> Hold either arrow key to accelerate in that direction. <br>Release key to reset acceleration.</p>
+		<p>	Press <strong> up </strong> arrow and <strong>down</strong> arrow keys continuously to move the ratings towards social or random (non-social) interactions. <br> Hold either arrow key to accelerate in that direction. <br>Release key to reset acceleration.</p>
 		<RatingBox 
 			pathway={pathway}
 			rating={rating}

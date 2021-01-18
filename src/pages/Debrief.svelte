@@ -15,6 +15,7 @@
     
 	let narration = '';
 	let response = '';
+	let response_score = '';
     let age = '';
     let feedback = '';
     let sex = '';
@@ -36,6 +37,8 @@
         try {
             await db.doc(subPath).update({
                 narration,
+		response,
+		response_score,
 				handed,
 				age,
                 sex,
@@ -112,35 +115,81 @@
     <div class="form-box">
         <form name="mturk" action={postURL} method='POST'>
             <h1>Thank You For Participating!</h1>
-			<em>The following question are mandatory</em>
+			<h2><em>The following question are mandatory</em></h2>
 			<label class="label"><u>Please write down, in a sentence or two, what you think happened between the shapes (if anything).</u>
                 <div class="options">
                 <textarea
                     class="textarea textarea-narration"
                     bind:value={narration} 
-                    placeholder="" />
+                    placeholder="" required />
                 </div>
             </label>
 			
 			<label class="label"><u>Do you think there was a social interaction between the shapes?</u>
                 <div class="options">
                 <label class="radio">
-                    <input type="radio" bind:group={response} value={'yes'} />
+                    <input type="radio" name="resp" bind:group={response} value={'yes'} required>
                     Yes
                 </label>
                 <label class="radio">
-                    <input type="radio" bind:group={response} value={'no'} />
+                    <input type="radio" name="resp" bind:group={response} value={'no'} >
                     No
                 </label>
                 <label class="radio">
-                    <input type="radio" bind:group={response} value={'unsure'} />
+                    <input type="radio" name="resp" bind:group={response} value={'unsure'} >
                     Unsure
                 </label>
                 <br> 
                 </div>
             </label>
+
+	    <label class="label"><u>On a scale from 1(least social) to 10 (most social), rate the video clip you just saw?</u>
+                <div class="options">
+                <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={1} required>
+                    1
+                </label>
+                <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={2} >
+                    2
+                </label>
+                <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={3} >
+                    3
+                </label>
+		 <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={4}>
+                    4
+                </label>
+                <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={5} >
+                    5
+                </label>
+                <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={6} >
+                    6
+                </label>
+		 <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={7}>
+                    7
+                </label>
+                <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={8} >
+                    8
+                </label>
+                <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={9} >
+                    9
+                </label>
+		 <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={10}>
+                    10
+                </label>
+                <br> 
+                </div>
+            </label>
 			
-            <em>The following questions are optional</em>
+            <h2><em>The following questions are optional</em></h2>
 
             <input type="hidden" name="assignmentId" id="assignmentId" value={currID}>
             <input type="hidden" name="hidden_val_DONT_REMOVE" value="1">

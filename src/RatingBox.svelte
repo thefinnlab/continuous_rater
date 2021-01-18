@@ -4,9 +4,9 @@
     import { db } from './utils.js';
     
     export let ratingType;
-    export let rating; // median value for ratings
+    export let rating; // median value for ratings (RV: initial value 50 obtained from Task.svelte I think)
     export let pathway;
-    export let time; // used to create dict with timestamp and rating
+    export let time; // used to create dict with timestamp and rating. (RV: initial value 0 from Task.svelte which gets it from App.svelte...I think)
     export let paused;
     export let ratingBoxUse = 'actual';
     
@@ -21,8 +21,8 @@
     
     // grabs reference for rating doc or creates it
     if (ratingBoxUse != 'demo page') {
-        docRef = db.doc(pathway);
-        docRef.set({0: rating});
+        docRef = db.doc(pathway); // RV: pathway ratingDocpathway from App.svelte
+        docRef.set({0: rating}); // RV: initial entry {0: 50}
     }
 
     let stepSize = ogStepSize;
