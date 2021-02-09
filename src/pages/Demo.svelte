@@ -77,10 +77,12 @@
 			bind:time={time}
 			on:pause={handlePause}
 			on:play={handlePlay}
-			on:finished={handleEnd}
 		></CustomVideo>
+		<br>
 		<h3>Rating Box: </h3>
-		<p>	Press <strong> up </strong> arrow and <strong>down</strong> arrow keys continuously to move the ratings towards social or random (non-social) interactions. <br> Hold either arrow key to accelerate in that direction. <br>Release key to reset acceleration.</p>
+		<p>	Press <strong> up </strong> arrow and <strong>down</strong> arrow keys continuously to shift your ratings towards social or random (non-social) interactions.
+<strong>Make sure you are updating your rating throughout the video whenever your assessment changes.
+</strong> <br> Hold either arrow key to accelerate in that direction, and release key to reset acceleration.</p>
 		<RatingBox 
 			pathway={pathway}
 			rating={rating}

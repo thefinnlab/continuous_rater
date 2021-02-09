@@ -253,10 +253,13 @@
     	// Change to the new state within Svelte
 		currentState = newState;
 		try {
+			
 			await db.doc(`${experiment}/subjects/${userGroup}/${params.workerId}`).update({
 				currentState
 			});
+		
 			console.log('updated user state');
+			
 		} catch (error) {
 			console.error(error);
 		}
@@ -344,7 +347,8 @@
 			time={time} 
 			ratingType={currRating} 
 			on:back={() => updateState('instructions1')} 
-			on:finished={() => updateState('instructions2')} />
+			on:finished={() => updateState('instructions2')} 
+			 />
 	{:else if currentState === 'instructions2'}
 		<Instructions2 on:back={() => updateState('demo')} on:finished={() => updateState('task')} />
 	{:else if currentState === 'task'}

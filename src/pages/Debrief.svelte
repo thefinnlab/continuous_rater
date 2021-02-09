@@ -27,7 +27,8 @@
         'Native-American / Alaskan-Native',
         'Pacific-Islander / Native-Hawaiian',
         'White / Caucasian',
-        'Other / Unknown'
+        'Other / Unknown',
+	'Prefer not to say'
     ];
     let nativeLang = '';
     let currentLoc = '';
@@ -114,11 +115,12 @@
 <div class="container">
     <div class="form-box">
         <form name="mturk" action={postURL} method='POST'>
-            <h1>Thank You For Participating!</h1>
-			<h2><em>The following question are mandatory</em></h2>
-			<label class="label"><u>Please write down, in a sentence or two, what you think happened between the shapes (if anything).</u>
+            <h1>Thank you for the ratings, now to the last part!</h1>
+			<h4><em>The following three questions are mandatory. Please go through them sequentially. They relate to the video you just viewed. There are no right or wrong answers, please answer as well as you can.</em></h4>
+			<label class="label"><u> Write down, in a sentence or two, what you think happened between the shapes (if anything).</u>
                 <div class="options">
                 <textarea
+		    minlength = 5
                     class="textarea textarea-narration"
                     bind:value={narration} 
                     placeholder="" required />
@@ -189,7 +191,7 @@
                 </div>
             </label>
 			
-            <h2><em>The following questions are optional</em></h2>
+            <h4><em>The following questions are optional</em></h4>
 
             <input type="hidden" name="assignmentId" id="assignmentId" value={currID}>
             <input type="hidden" name="hidden_val_DONT_REMOVE" value="1">
@@ -211,8 +213,12 @@
                     Female
                 </label>
                 <label class="radio">
-                    <input type="radio" bind:group={sex} value={'other'} />
-                    Other
+                    <input type="radio" bind:group={sex} value={'nonbinary'} />
+                    Nonbinary
+                </label>
+		<label class="radio">
+                    <input type="radio" bind:group={sex} value={'noresp'} />
+                    Prefer not to say
                 </label>
                 <br> 
                 </div>
@@ -222,11 +228,19 @@
                 <div class="options">
                 <label class="radio">
                     <input type="radio" bind:group={handed} value={'left'} />
-                    Left Handed
+                    Left dominant
                 </label>
                 <label class="radio">
                     <input type="radio" bind:group={handed} value={'right'} />
-                    Right Handed
+                    Right dominant
+                </label>
+		<label class="radio">
+                    <input type="radio" bind:group={handed} value={'both'} />
+                    Ambidexterous
+                </label>
+		<label class="radio">
+                    <input type="radio" bind:group={handed} value={'noresp'} />
+                    Prefer not to say
                 </label>
                 <br>
                 </div>
@@ -242,6 +256,11 @@
                     <input type="radio" bind:group={ethnicity} value={'not_hispanic'} />
                     Not Hispanic
                 </label>
+		<label class="radio">
+                    <input type="radio" bind:group={ethnicity} value={'noresp'} />
+                    Prefer not to say
+                </label>
+
                 <br>
                 </div>
             </label>
@@ -265,13 +284,13 @@
                 <br>
             </label>
 
-            <label class="label"><u>Current Location</u>
+            <label class="label"><u>Current Location (US State in 2 letters)</u>
                 <div class="options">
                 <input
                     class="input lang-input"
                     type="text"
                     bind:value={currentLoc}
-                    placeholder="US State" />
+                    placeholder="" />
                 </div>
                 <br>
             </label> 
