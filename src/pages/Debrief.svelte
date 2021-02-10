@@ -304,7 +304,7 @@
                 </div>
             </label>
                         
-            <p>Thank you for your participation!</p>
+            <p>Thank you for your participation! Please remember to NOT repeat this HIT. </p>
                     
             <div class="field-label">
                 <!-- Left empty for spacing -->

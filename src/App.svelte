@@ -170,10 +170,10 @@
                                             moviesRemaining = removeItemOnce(moviesRemaining, doc.id.split("-")[0]);
                                         });
                                         // see how many movies are left
-                                        numOptions = 1; //moviesRemaining.length;
+                                        numOptions = moviesRemaining.length;
                                         console.log('moviesRemaining: ', moviesRemaining);
                                         // if any movie-rating pairings left, load and start
-                                        if (numOptions > 0) {
+                                        if (numOptions == 10) {
                                         // choose random movie and rating type
                                             let movieIndex = Math.floor(Math.random()*moviesRemaining.length);
                                             let ratingIndex = Math.floor(Math.random()*ratingTypes.length); // always 0 for us (since ratingTypes = ['social])
@@ -208,7 +208,7 @@
                                             demo_moviesRemaining = removeItemOnce(demo_moviesRemaining, doc.id.split("-")[0]);
                                         });
                                         // see how many movies are left
-                                        numOptions = 1; //demo_moviesRemaining.length;
+                                        numOptions = demo_moviesRemaining.length;
                                         console.log('demo_moviesRemaining: ', demo_moviesRemaining);
                                         // if any movie-rating pairings left, load and start
                                         if (numOptions > 0) {
