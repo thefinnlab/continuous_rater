@@ -116,21 +116,20 @@
     <div class="form-box">
         <form name="mturk" action={postURL} method='POST'>
             <h1>Thank you for the ratings, now to the last part!</h1>
-			<h4><em>The following three questions are mandatory. Please go through them sequentially. They relate to the video you just viewed. There are no right or wrong answers, please answer as well as you can.</em></h4>
+			<h4><em>The first three questions are related to the video you just viewed. You should respond to the questions sequentially. There are no right or wrong answers, but please answer as well as you can.</em></h4>
 			<label class="label"><u> Write down, in a sentence or two, what you think happened between the shapes (if anything).</u>
                 <div class="options">
                 <textarea
-		    minlength = 5
                     class="textarea textarea-narration"
                     bind:value={narration} 
-                    placeholder="" required />
+                    placeholder="" />
                 </div>
             </label>
 			
 			<label class="label"><u>Do you think there was a social interaction between the shapes?</u>
                 <div class="options">
                 <label class="radio">
-                    <input type="radio" name="resp" bind:group={response} value={'yes'} required>
+                    <input type="radio" name="resp" bind:group={response} value={'yes'}>
                     Yes
                 </label>
                 <label class="radio">
@@ -148,7 +147,7 @@
 	    <label class="label"><u>On a scale from 1(least social) to 10 (most social), rate the video clip you just saw?</u>
                 <div class="options">
                 <label class="radio">
-                    <input type="radio" name="resp_score" bind:group={response_score} value={1} required>
+                    <input type="radio" name="resp_score" bind:group={response_score} value={1}>
                     1
                 </label>
                 <label class="radio">

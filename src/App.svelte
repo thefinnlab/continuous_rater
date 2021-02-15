@@ -173,7 +173,7 @@
                                         numOptions = moviesRemaining.length;
                                         console.log('moviesRemaining: ', moviesRemaining);
                                         // if any movie-rating pairings left, load and start
-                                        if (numOptions == 10) {
+                                        if (numOptions > 0) {
                                         // choose random movie and rating type
                                             let movieIndex = Math.floor(Math.random()*moviesRemaining.length);
                                             let ratingIndex = Math.floor(Math.random()*ratingTypes.length); // always 0 for us (since ratingTypes = ['social])
