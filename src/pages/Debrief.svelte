@@ -116,7 +116,7 @@
     <div class="form-box">
         <form name="mturk" action={postURL} method='POST'>
             <h1>Thank you for the ratings, now to the last part!</h1>
-			<h4><em>The first three questions are related to the video you just viewed. You should respond to the questions sequentially. There are no right or wrong answers, but please answer as well as you can.</em></h4>
+			<h4><em>The first three questions are related to the video you just viewed. Please answer them sequentially. There are no right or wrong answers here.</em></h4>
 			<label class="label"><u> Write down, in a sentence or two, what you think happened between the shapes (if anything).</u>
                 <div class="options">
                 <textarea

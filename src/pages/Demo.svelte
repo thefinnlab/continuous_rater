@@ -80,9 +80,8 @@
 		></CustomVideo>
 		<br>
 		<h3>Rating Box: </h3>
-		<p>	Press <strong> up </strong> arrow and <strong>down</strong> arrow keys continuously to shift your ratings towards social or random (non-social) interactions.
-<strong>Make sure you are updating your rating throughout the video whenever your assessment changes.
-</strong> <br> Hold either arrow key to accelerate in that direction, and release key to reset acceleration.</p>
+		<p>	As you watch the video, please indicate whether the shapes are having a social or random (non-social) interaction at each timepoint by constantly pressing either the <strong> up arrow </strong> or the <strong>down arrow </strong> key.
+<strong>Make sure you are updating your rating throughout the video especially whenever your assessment changes.</strong> <br> Hold either arrow key to accelerate in that direction, and release it to reset acceleration.</p>
 		<RatingBox 
 			pathway={pathway}
 			rating={rating}

@@ -68,7 +68,7 @@
 			bind:paused={paused}
 			ratingType={ratingType}>
 		</RatingBox>
-		<h2 style="text-align:center">Please rate how <strong>social </strong> or <strong> random </strong> you perceive the interactions to be</h2>
+		<h2 style="text-align:center">Please rate how <strong>social (up arrow)  </strong> or <strong> random (down arrow) </strong> you perceive the interactions to be</h2>
 	</div>
 </main>
 
