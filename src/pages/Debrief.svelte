@@ -140,6 +140,10 @@
                     <input type="radio" name="resp" bind:group={response} value={'unsure'} >
                     Unsure
                 </label>
+	        <label class="radio">
+	            <input type="radio" name="resp" bind:group={response} value={'noresp'} />
+                    Prefer not to say
+		</label>
                 <br> 
                 </div>
             </label>
@@ -182,9 +186,13 @@
                     <input type="radio" name="resp_score" bind:group={response_score} value={9} >
                     9
                 </label>
-		 <label class="radio">
+		<label class="radio">
                     <input type="radio" name="resp_score" bind:group={response_score} value={10}>
                     10
+                </label>
+	        <label class="radio">
+                    <input type="radio" name="resp_score" bind:group={response_score} value={0}>
+                    Prefer to not say
                 </label>
                 <br> 
                 </div>
