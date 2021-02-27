@@ -145,19 +145,19 @@
 																 //console.log(data)
 														    subjectGroupCollection.doc(params.workerId + '_' + serverTime).set(data)
 															// updates most recent login time
-                                //subjectRef.update({
-                                //    mostRecentTime: serverTime,
-																//		startTime: serverTime,
-                                //		});
-																subjectRef.set({
-																				name: 'unknown',
-                                        workerId: params.workerId,
-                                        assignmentId: params.assignmentId,
-                                        hitId: params.hitId,
-                                        userId: currUser.uid,
-                                        startTime: serverTime,
-                                        consentStatus: 'incomplete'
-                                    });
+                                subjectRef.update({
+                                    mostRecentTime: serverTime,
+																		startTime: serverTime,
+                                		});
+																//subjectRef.set({
+																//				name: 'unknown',
+                                //        workerId: params.workerId,
+                                //        assignmentId: params.assignmentId,
+                                //        hitId: params.hitId,
+                                //        userId: currUser.uid,
+                                //        startTime: serverTime,
+                                //        consentStatus: 'incomplete'
+                                //    });
                           } else { // create a new document
 																//subjectGroupCollection.doc(params.workerId).set({name: 'unknown'});
 																console.log('no previous documents found...creating new...');
