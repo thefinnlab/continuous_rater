@@ -39,10 +39,9 @@
         console.log(subPath);
             await db.doc(subPath).update({
                 narration,
-		response,
-		response_score,
-				handed,
-				age,
+		            response,
+		            response_score,
+				        age,
                 sex,
                 ethnicity,
                 race,

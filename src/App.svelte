@@ -5,32 +5,32 @@
 -->
 
 <script>
-    	import { db, auth, serverTime, params, ratingTypes, dev,
-            experiment, userGroup, labName, email} from './utils.js';
+	import { db, auth, serverTime, params, ratingTypes, dev,
+        experiment, userGroup, labName, email} from './utils.js';
 
-    	import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import Intro from './pages/Intro.svelte';
 	import Botcheck from './pages/Botcheck.svelte';
 	import Consent from './pages/Consent.svelte';
 	import Instructions1 from './pages/Instructions1.svelte';
 	import Instructions2 from './pages/Instructions2.svelte';
-    	import Demo from './pages/Demo.svelte';
+	import Demo from './pages/Demo.svelte';
 	import Task from './pages/Task.svelte';
 	import Debrief from './pages/Debrief.svelte';
-    	import Complete from './pages/Complete.svelte';
-    	import Loading from './components/Loading.svelte';
-    	import Header from './components/Header.svelte';
-    	import MTurkPreview from './pages/MTurkPreview.svelte';
+	import Complete from './pages/Complete.svelte';
+	import Loading from './components/Loading.svelte';
+	import Header from './components/Header.svelte';
+	import MTurkPreview from './pages/MTurkPreview.svelte';
 
     // path details
-    	const ratingsPath = `${experiment}/ratings`;
-    	const ratingsDoc = db.doc(ratingsPath);
-    	const subjectGroupPath = `${experiment}/subjects/${userGroup}`;
-    	const subjectGroupCollection = db.collection(subjectGroupPath);
-    	const stimuliPath = `${experiment}/stimuli`;
-    	const stimuliDoc = db.doc(stimuliPath);
-    	const demo_stimuliPath = `${experiment}/demo_stimuli`;
-    	const demo_stimuliDoc = db.doc(demo_stimuliPath);
+	const ratingsPath = `${experiment}/ratings`;
+	const ratingsDoc = db.doc(ratingsPath);
+	const subjectGroupPath = `${experiment}/subjects/${userGroup}`;
+	const subjectGroupCollection = db.collection(subjectGroupPath);
+	const stimuliPath = `${experiment}/stimuli`;
+	const stimuliDoc = db.doc(stimuliPath);
+	const demo_stimuliPath = `${experiment}/demo_stimuli`;
+	const demo_stimuliDoc = db.doc(demo_stimuliPath);
 
     // declare and set other necessary variables
 	let currVid;
@@ -41,13 +41,13 @@
 	let subjectPath;
 	let ratingDocPathway;
 	let currentState;
-    	let consentStatus;
-    	let alreadyWatched = [];
-    	let moviesRemaining = [];
+	let consentStatus;
+	let alreadyWatched = [];
+	let moviesRemaining = [];
 	let demo_moviesRemaining = [];
-    	let numOptions;
-    	let time = 0;
-    	let initExperiment = false;
+	let numOptions;
+	let time = 0;
+	let initExperiment = false;
 
     // use to validate build type in JS console
     console.log(dev);
@@ -82,9 +82,6 @@
             console.log(`Reset user requested but workerId is ${params.workerId}`);
         }
     };
-
-
-
 
 	// *****************************
 	// main function
@@ -140,40 +137,40 @@
 												subjectRef.get().then(function(doc) {
 												console.log(doc)
 												if (doc.exists) { // load old document
-                                 console.log('previous document found...loading state...');
-																 let data = doc.data();
-																 //console.log(data)
-														    subjectGroupCollection.doc(params.workerId + '_' + serverTime).set(data)
+                             console.log('previous document found...loading state...');
+														 let data = doc.data();
+														 //console.log(data)
+												     subjectGroupCollection.doc(params.workerId + '_' + serverTime).set(data)
 															// updates most recent login time
-                                subjectRef.update({
-                                    mostRecentTime: serverTime,
-																		narration: '',
-																		response: '',
-																		response_score: '',
-																		vid: ''
-																});
+                              subjectRef.update({
+                                  mostRecentTime: serverTime,
+																	narration: '',
+																	response: '',
+																	response_score: '',
+																	vid: ''
+															});
 
-																//subjectRef.set({
-																//				name: 'unknown',
-                                //        workerId: params.workerId,
-                                //        assignmentId: params.assignmentId,
-                                //        hitId: params.hitId,
-                                //        userId: currUser.uid,
-                                //        startTime: serverTime,
-                                //        consentStatus: 'incomplete'
-                                //    });
+															//subjectRef.set({
+															//				name: 'unknown',
+                              //        workerId: params.workerId,
+                              //        assignmentId: params.assignmentId,
+                              //        hitId: params.hitId,
+                              //        userId: currUser.uid,
+                              //        startTime: serverTime,
+                              //        consentStatus: 'incomplete'
+                              //    });
                           } else { // create a new document
-																subjectGroupCollection.doc(params.workerId).set({name: 'unknown'});
-																console.log('no previous documents found...creating new...');
-																subjectPath = `${subjectGroupPath}/${params.workerId}`; // setting for use in HTML below
-																subjectRef.set({
-																				workerId: params.workerId,
-                                        assignmentId: params.assignmentId,
-                                        hitId: params.hitId,
-                                        userId: currUser.uid,
-                                        startTime: serverTime,
-                                        consentStatus: 'incomplete'
-                                    });
+															subjectGroupCollection.doc(params.workerId).set({name: 'unknown'});
+															console.log('no previous documents found...creating new...');
+															subjectPath = `${subjectGroupPath}/${params.workerId}`; // setting for use in HTML below
+															subjectRef.set({
+																			workerId: params.workerId,
+                                      assignmentId: params.assignmentId,
+                                      hitId: params.hitId,
+                                      userId: currUser.uid,
+                                      startTime: serverTime,
+                                      consentStatus: 'incomplete'
+                                  });
                           }
                           // grab stimuli doc and add all movies to list
                           stimuliDoc.get().then(function(stimuliTable) {
