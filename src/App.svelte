@@ -119,7 +119,7 @@
                             console.log('user found...signing in with credentials');
                             // then look for document
                         } catch (error) {
-                            if (error.code === 'auth/user-not-found') {
+                            if (error.code == 'auth/user-not-found') {
                                 console.log('no user found...creating new credentials');
                                 // if login fails, create new user
                                 await auth.createUserWithEmailAndPassword(
@@ -141,19 +141,20 @@
 												console.log(doc)
 												if (doc.exists) { // load old document
                                  console.log('previous document found...loading state...');
-																 console.log('a')
 																 let data = doc.data();
 																 //console.log(data)
 														    subjectGroupCollection.doc(params.workerId + '_' + serverTime).set(data)
 															// updates most recent login time
                                 subjectRef.update({
-                                    mostRecentTime: serverTime
+                                    mostRecentTime: serverTime,
+																		startTime: serverTime,
                                 		});
                           } else { // create a new document
-																subjectGroupCollection.doc(params.workerId).set({name: 'unknown'});
+																//subjectGroupCollection.doc(params.workerId).set({name: 'unknown'});
 																console.log('no previous documents found...creating new...');
 																subjectPath = `${subjectGroupPath}/${params.workerId}`; // setting for use in HTML below
 																subjectRef.set({
+																				name: 'unknown',
                                         workerId: params.workerId,
                                         assignmentId: params.assignmentId,
                                         hitId: params.hitId,
@@ -193,7 +194,7 @@
                                             ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
                                             // grab URL for video sourcing
                                             currVidSrc = stimuliTable.data()[currVid];
-																						subjectGroupCollection.doc(params.workerId).set({vid: currVid});
+																						subjectGroupCollection.doc(params.workerId).update({vid: currVid});
 					  																console.log('url:',currVidSrc)
                                             updateState('consent');
 
