@@ -68,7 +68,7 @@
 			bind:paused={paused}
 			ratingType={ratingType}>
 		</RatingBox>
-		<h2 style="text-align:center">Click on the video to start, and <strong>continuously</strong> rate how <strong>social (UP arrow key)  </strong> or <strong> random (DOWN arrow key) </strong> you perceive the interactions between the shapes to be</h2>
+		<h3 style="text-align:center">Click on the video to start, and <strong>continuously</strong> rate how <strong>social (UP arrow key)  </strong> or <strong> random (DOWN arrow key) </strong> you perceive the interactions between the shapes to be</h3>
     <h3 style="text-align:center">Non-responders on this page may have their HITs rejected</h3>
 	</div>
 </main>

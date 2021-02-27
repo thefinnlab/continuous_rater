@@ -5,7 +5,6 @@
     import { db, params, serverTime } from '../utils.js';
 
     // populating necessary variables
-    //let vid = vid;
     export let subPath;
     export let email;
     export let labName;

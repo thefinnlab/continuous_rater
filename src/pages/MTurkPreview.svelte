@@ -29,6 +29,6 @@
         <p>You are given {totalHITTime} minutes to complete this HIT, but it should only take about {estHITTime}.</p>
         <p>This HIT pays ${HITPay}.</p>
         <p>Please accept this HIT if you are interested!</p>
-	<p><strong>IMPORTANT</strong>: Please do NOT accept this HIT if you have already done another HIT posted by <strong>Finn Lab </strong> before. You may not get paid if you do this HIT multiple times.</p>
+	<p><strong>IMPORTANT</strong>: Please do NOT accept this HIT if you have already completed another HIT posted by <strong>Finn Lab </strong> before. HIT payment for repeaters could be withheld.</p>
     </div>
 </div>

@@ -144,25 +144,16 @@
 																 console.log('a')
 																 let data = doc.data();
 																 //console.log(data)
-																 subjectGroupCollection.doc(params.workerId + '_' + serverTime).set(data)//.then({
-																subjectRef.set({
-																			workerId: params.workerId,
-																			assignmentId: params.assignmentId,
-																			hitId: params.hitId,
-																			userId: currUser.uid,
-																			startTime: serverTime,
-																			consentStatus: 'incomplete'
-
-																	});
+														    subjectGroupCollection.doc(params.workerId + '_' + serverTime).set(data)
 															// updates most recent login time
-                                //  subjectRef.update({
-                                //       mostRecentTime: serverTime
-                                //   });
-                              } else { // create a new document
-														subjectGroupCollection.doc(params.workerId).set({name: 'unknown'});
-														console.log('no previous documents found...creating new...');
-														subjectPath = `${subjectGroupPath}/${params.workerId}`; // setting for use in HTML below
-														subjectRef.set({
+                                subjectRef.update({
+                                    mostRecentTime: serverTime
+                                		});
+                          } else { // create a new document
+																subjectGroupCollection.doc(params.workerId).set({name: 'unknown'});
+																console.log('no previous documents found...creating new...');
+																subjectPath = `${subjectGroupPath}/${params.workerId}`; // setting for use in HTML below
+																subjectRef.set({
                                         workerId: params.workerId,
                                         assignmentId: params.assignmentId,
                                         hitId: params.hitId,
@@ -170,35 +161,34 @@
                                         startTime: serverTime,
                                         consentStatus: 'incomplete'
                                     });
-                                }
-                                // grab stimuli doc and add all movies to list
-                                stimuliDoc.get().then(function(stimuliTable) {
-                                    for (var field in stimuliTable.data()) {
-                                        moviesRemaining.push(field);
-                                    }
-                                    // check to see which movies subject has already viewed (if any)
-                                    let currPath = `${ratingsPath}/${params.workerId}`;
+                          }
+                          // grab stimuli doc and add all movies to list
+                          stimuliDoc.get().then(function(stimuliTable) {
+                          for (var field in stimuliTable.data()) {
+                              moviesRemaining.push(field);
+                          }
+                          // check to see which movies subject has already viewed (if any)
+                          let currPath = `${ratingsPath}/${params.workerId}`;
 
-                                    db.collection(currPath).get().then(function(ratingList) {
-                                        // removes already completed movies from option set
-																				console.log('rating list')
-																				console.log(ratingList)
-                                        ratingList.forEach(function(doc) {
-
-                                            moviesRemaining = removeItemOnce(moviesRemaining, doc.id.split("-")[0]);
-                                        });
-                                        // see how many movies are left
-                                        numOptions = moviesRemaining.length;
-                                        console.log('moviesRemaining: ', moviesRemaining);
-                                        // if any movie-rating pairings left, load and start
-                                        if (numOptions > 0) {
-                                        // choose random movie and rating type
+                          db.collection(currPath).get().then(function(ratingList) {
+                          // removes already completed movies from option set
+															console.log('rating list')
+															console.log(ratingList)
+                              ratingList.forEach(function(doc) {
+              										moviesRemaining = removeItemOnce(moviesRemaining, doc.id.split("-")[0]);
+                              });
+                              // see how many movies are left
+                              numOptions = moviesRemaining.length;
+                              console.log('moviesRemaining: ', moviesRemaining);
+                              // if any movie-rating pairings left, load and start
+                              if (numOptions > 0) {
+                              // choose random movie and rating type
                                             let movieIndex = Math.floor(Math.random()*moviesRemaining.length);
                                             let ratingIndex = Math.floor(Math.random()*ratingTypes.length); // always 0 for us (since ratingTypes = ['social])
                                             console.log('ratingTypes.length:',ratingTypes.length)
 
-					  currVid = moviesRemaining[movieIndex];
-					  currRating = ratingTypes[ratingIndex]; // 'social' in our case
+					  																currVid = moviesRemaining[movieIndex];
+					  																currRating = ratingTypes[ratingIndex]; // 'social' in our case
                                             let vidPlusRating = `${currVid}-${currRating}`;//videoname-social
                                             ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
                                             // grab URL for video sourcing
