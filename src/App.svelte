@@ -146,9 +146,9 @@
 														    subjectGroupCollection.doc(params.workerId + '_' + serverTime).set(data)
 															// updates most recent login time
                                 subjectRef.update({
-                                    mostRecentTime: serverTime,
-																		startTime: serverTime,
-                                		});
+                                    startTime: serverTime,
+																		consentStatus: 'incomplete',
+																});
 																//subjectRef.set({
 																//				name: 'unknown',
                                 //        workerId: params.workerId,
