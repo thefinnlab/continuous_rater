@@ -9,7 +9,7 @@
         text-align: center;
         align-items: center;
         width: 50%;
-        margin: 0 auto !important; 
+        margin: 0 auto !important;
     }
     .text-box {
         text-align: left;
@@ -17,7 +17,7 @@
         background-color: rgba(255, 255, 255, 0.4);
         border: 2px solid grey;
         border-radius: 2px;
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);   
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     }
 </style>
 
@@ -29,9 +29,6 @@
         <p>You are given {totalHITTime} minutes to complete this HIT, but it should only take about {estHITTime}.</p>
         <p>This HIT pays ${HITPay}.</p>
         <p>Please accept this HIT if you are interested!</p>
-	<p><strong>IMPORTANT</strong>: Please do NOT accept this HIT if you have already done another HIT posted by <strong>Finn Lab </strong> before.</p>
+	<p><strong>IMPORTANT</strong>: Please do NOT accept this HIT if you have already done another HIT posted by <strong>Finn Lab </strong> before. You may not get paid if you do this HIT multiple times.</p>
     </div>
 </div>
-
-
-

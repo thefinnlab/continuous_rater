@@ -5,6 +5,7 @@
     import { db, params, serverTime } from '../utils.js';
 
     // populating necessary variables
+    //let vid = vid;
     export let subPath;
     export let email;
     export let labName;
@@ -12,7 +13,7 @@
     let emailAddress = "mailto:" + email;
     let currID = params.assignmentId;
     let postURL = params.turkSubmitTo + '/mturk/externalSubmit';
-    
+
 	let narration = '';
 	let response = '';
 	let response_score = '';
@@ -60,7 +61,7 @@
 
 <style>
     .container {
-        margin: 0 auto !important; 
+        margin: 0 auto !important;
         max-width: 800px;
         text-align: center;
     }
@@ -75,7 +76,7 @@
         min-width: 80%;
         max-width: 80%;
     }
-	
+
 	.textarea-narration {
         min-width: 80%;
         max-width: 80%;
@@ -90,7 +91,7 @@
             background-color: rgba(255, 255, 255, 0.6);
         border-left: 2px solid #aaa;
             border-radius: 2px;
-            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);   
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
         text-align: left;
     }
 
@@ -121,11 +122,11 @@
                 <div class="options">
                 <textarea
                     class="textarea textarea-narration"
-                    bind:value={narration} 
+                    bind:value={narration}
                     placeholder="" />
                 </div>
             </label>
-			
+
 			<label class="label"><u>Do you think there was a social interaction between the shapes?</u>
                 <div class="options">
                 <label class="radio">
@@ -144,7 +145,7 @@
 	            <input type="radio" name="resp" bind:group={response} value={'noresp'} />
                     Prefer not to say
 		</label>
-                <br> 
+                <br>
                 </div>
             </label>
 
@@ -194,10 +195,10 @@
                     <input type="radio" name="resp_score" bind:group={response_score} value={0}>
                     Prefer to not say
                 </label>
-                <br> 
+                <br>
                 </div>
             </label>
-			
+
             <h4><em>The following questions are optional</em></h4>
 
             <input type="hidden" name="assignmentId" id="assignmentId" value={currID}>
@@ -227,7 +228,7 @@
                     <input type="radio" bind:group={sex} value={'noresp'} />
                     Prefer not to say
                 </label>
-                <br> 
+                <br>
                 </div>
             </label>
 
@@ -271,7 +272,7 @@
                 <br>
                 </div>
             </label>
-                    
+
             <label class="label"><u>Race</u>
                 <div class="options">
                 <select multiple bind:value={race}>
@@ -281,9 +282,9 @@
                 </select>
                 </div>
             </label>
-                    
+
             <p class="help">Cmd/Ctrl+Click to select multiple</p>
-                    
+
             <label class="label"><u>Native Language</u>
                 <div class="options">
                 <input class="input lang-input" type="text" bind:value={nativeLang} />
@@ -300,31 +301,24 @@
                     placeholder="" />
                 </div>
                 <br>
-            </label> 
-                    
+            </label>
+
             <label class="label"><u>Feedback</u>
                 <div class="options">
                 <textarea
                     class="textarea textarea-feedback"
-                    bind:value={feedback} 
+                    bind:value={feedback}
                     placeholder="Thoughts or suggestions about this HIT" />
                 </div>
             </label>
-                        
+
             <p>Thank you for your participation! Please remember to NOT repeat this HIT. </p>
-                    
+
             <div class="field-label">
                 <!-- Left empty for spacing -->
-            </div> 
+            </div>
             <br>
-            <button class="button is-success is-large" on:click={submitHIT}>Submit HIT</button>         
+            <button class="button is-success is-large" on:click={submitHIT}>Submit HIT</button>
         </form>
-    </div> 
+    </div>
 </div>
-    
-
-
-
-
-
-

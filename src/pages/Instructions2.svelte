@@ -5,9 +5,9 @@
   import { createEventDispatcher } from 'svelte';
 
   // Add/remove items here to create more instructions pages
-  
+
   const instructions = [
-    'If these instructions make sense and you would like to begin, click the button the "Go to Task" button. If you would like to re-do the demo, please press the "Back" button.'
+    'If these instructions make sense and you would like to begin, click the button the "Go to Task" button. On the next page, please make sure to rate the video continuously using the UP/DOWN arrow keys on your keyboard to successfully complete the HIT. If you would like to re-do the demo, please press the "Back" button. '
   ];
 
   const dispatch = createEventDispatcher();
@@ -29,7 +29,7 @@
 
 <style>
   .container {
-    margin: 0 auto !important; 
+    margin: 0 auto !important;
     max-width: 800px;
     text-align: center;
   }
@@ -40,7 +40,7 @@
 		background-color: rgba(255, 255, 255, 0.4);
 		border: 2px solid grey;
 		border-radius: 2px;
-		box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);   
+		box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 	}
 
    .next {
@@ -51,7 +51,7 @@
     background-color: lightcoral;
   }
 </style>
- 
+
 <div class="container">
   <h1 >Instructions</h1>
   <div class="text-box">
@@ -69,7 +69,3 @@
     {/if}
   </button>
 </div>
-
-
-
-  
