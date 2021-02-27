@@ -149,7 +149,8 @@
                                     mostRecentTime: serverTime,
 																		narration: '',
 																		response: '',
-																		response_score: ''
+																		response_score: '',
+																		vid: ''
 																});
 
 																//subjectRef.set({
@@ -205,7 +206,7 @@
                                             ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
                                             // grab URL for video sourcing
                                             currVidSrc = stimuliTable.data()[currVid];
-																						//subjectRef.update({vid: currVid});
+																						subjectRef.update({vid: currVid});
 					  																console.log('url:',currVidSrc)
                                             updateState('consent');
 
