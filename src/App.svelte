@@ -194,7 +194,7 @@
                                             ratingDocPathway = `${ratingsPath}/${params.workerId}/${vidPlusRating}`;
                                             // grab URL for video sourcing
                                             currVidSrc = stimuliTable.data()[currVid];
-																						subjectGroupCollection.doc(params.workerId).update({vid: currVid});
+																						//subjectRef.update({vid: currVid});
 					  																console.log('url:',currVidSrc)
                                             updateState('consent');
 
