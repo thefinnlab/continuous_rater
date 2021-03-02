@@ -36,7 +36,6 @@
 
     const submitHIT = async () => {
         try {
-        console.log(subPath);
             await db.doc(subPath).update({
                 narration,
 		            response,
