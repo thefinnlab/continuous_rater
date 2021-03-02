@@ -147,7 +147,10 @@
 																	narration: '',
 																	response: '',
 																	response_score: '',
-																	vid: ''
+																	vid: '',
+																	startTime: serverTime,
+																	consentStatus: 'incomplete',
+																	currentState: ''
 															});
 
 															//subjectRef.set({
