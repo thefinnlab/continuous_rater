@@ -31,7 +31,7 @@ export const experiment = 'social-ness'; // name of experiment (should match col
 
 // HIT variables
 export const HITPay = '1.50'; // pay for HIT completion (format as X.XX with no dollar sign)
-export const userGroup = 'MTurk_Batch4'; // name of collection of participants for current HIT
+export const userGroup = 'MTurk_Batch5'; // name of collection of participants for current HIT
 export const estHITTime = '5'; // estimated time to complete HIT (in minutes)
 export const totalHITTime = estHITTime * 2; // total time provided for HIT (in minutes)
 
