@@ -26,7 +26,8 @@
     <h1>HIT Preview</h1>
     <div class="text-box">
         <p>This HIT involves {studyTasks}.</p>
-        <p>You are given {totalHITTime} minutes to complete this HIT, but it should only take about {estHITTime}.</p>
+        <p>You are given {totalHITTime} minutes to complete this HIT, but it should only take about {estHITTime}. Since the
+        HIT expires after {totalHITTime} minutes, please accept this only when you are ready to start the task. </p>
         <p>This HIT pays ${HITPay}.</p>
         <p>Please accept this HIT if you are interested!</p>
 	<p><strong>IMPORTANT</strong>: Please do NOT accept this HIT if you have already completed another HIT posted by <strong>Finn Lab </strong> before. HIT payment for repeaters could be withheld.</p>
